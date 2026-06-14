@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Canna - 15 Juni 2026 ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:black;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.bg{
+position:absolute;
+width:100%;
+height:100%;
+background:radial-gradient(circle at center,#ff4fa0,#000 60%);
+opacity:0;
+transition:2s;
+}
+
+.container{
+text-align:center;
+z-index:10;
+padding:20px;
+max-width:800px;
+}
+
+.text{
+font-size:2rem;
+opacity:0;
+transform:translateY(20px);
+transition:1s;
+text-shadow:0 0 20px pink;
+}
+
+.big{
+font-size:4rem;
+font-weight:bold;
+color:#ff4fa0;
+text-shadow:0 0 30px pink;
+}
+
+.card{
+display:none;
+margin-top:20px;
+gap:10px;
+flex-direction:column;
+}
+
+.btn{
+padding:15px;
+border:none;
+border-radius:20px;
+background:#ff4fa0;
+color:white;
+font-size:1rem;
+cursor:pointer;
+margin:5px;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+.type{
+font-size:1.2rem;
+white-space:pre-line;
+margin-top:20px;
+min-height:120px;
+}
+
+.particle{
+position:absolute;
+width:6px;
+height:6px;
+background:pink;
+border-radius:50%;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0) scale(0);}
+100%{transform:translateY(-100vh) scale(1);}
+}
+
+.fade{
+opacity:1 !important;
+transform:translateY(0) !important;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg" id="bg"></div>
+
+<div class="container">
+
+<div class="text" id="t1">15 Juni 2026</div>
+<div class="text" id="t2">Hari ini...</div>
+<div class="text" id="t3">bukan hari biasa.</div>
+<div class="text big" id="t4">CANNA</div>
+
+<div class="card" id="menu">
+<button class="btn" onclick="scene1()">🌸 A Message</button>
+<button class="btn" onclick="scene2()">🎂 Birthday Wish</button>
+<button class="btn" onclick="scene3()">💖 Final Surprise</button>
+</div>
+
+<div class="type" id="type"></div>
+
+</div>
+
+<script>
+
+let texts=[
+"15 Juni 2026",
+"Hari ini...",
+"bukan hari biasa.",
+"CANNA"
+];
+
+let i=0;
+
+function showText(){
+if(i<texts.length){
+document.getElementById("t"+(i+1)).classList.add("fade");
+i++;
+setTimeout(showText,1200);
+}else{
+setTimeout(()=>{
+document.getElementById("menu").style.display="flex";
+},800);
+}
+}
+
+showText();
+
+/* particles */
+for(let i=0;i<60;i++){
+let p=document.createElement("div");
+p.className="particle";
+p.style.left=Math.random()*100+"vw";
+p.style.top=Math.random()*100+"vh";
+p.style.animationDuration=(3+Math.random()*5)+"s";
+document.body.appendChild(p);
+}
+
+function typeText(text){
+let el=document.getElementById("type");
+el.innerHTML="";
+let i=0;
+
+let t=setInterval(()=>{
+el.innerHTML+=text[i];
+i++;
+if(i>=text.length) clearInterval(t);
+},40);
+}
+
+function scene1(){
+typeText("Hai Canna...\n\nHari ini aku cuma mau bilang...\nkamu itu spesial.");
+document.getElementById("bg").style.opacity=1;
+}
+
+function scene2(){
+typeText("Happy Birthday Canna ❤️\n\nSemoga semua yang kamu mau\njadi kenyataan.\n\nDan semoga kamu selalu bahagia.");
+document.getElementById("bg").style.opacity=1;
+}
+
+function scene3(){
+typeText("Out of billions of people...\n\nI’m glad it’s you.\n\nHappy Birthday 💕");
+
+document.getElementById("bg").style.opacity=1;
+
+for(let i=0;i<80;i++){
+let p=document.createElement("div");
+p.className="particle";
+p.style.background="white";
+p.style.left=Math.random()*100+"vw";
+p.style.top="100vh";
+p.style.animationDuration=(2+Math.random()*3)+"s";
+document.body.appendChild(p);
+}
+
+setTimeout(()=>{
+document.getElementById("t4").innerHTML="HAPPY BIRTHDAY CANNA 🩷";
+document.getElementById("t4").classList.add("fade");
+},2000);
+}
+
+</script>
+
+</body>
+</html>
